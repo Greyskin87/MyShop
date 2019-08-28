@@ -8,7 +8,7 @@ using MyShop.Core.Models; //to access my models
 
 namespace MyShop.DataAccess.InMemory
 {
-    class ProductRepository
+    public class ProductRepository
     {
         ObjectCache cache = MemoryCache.Default; //Initialize the cache
         List<Product> products; //Declare my internal collection
