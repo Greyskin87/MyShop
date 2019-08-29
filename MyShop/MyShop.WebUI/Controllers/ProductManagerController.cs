@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 using MyShop.Core.ViewModels;
 using MyShop.DataAccess.InMemory;
@@ -11,16 +12,16 @@ namespace MyShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryRepository<Product> context; //I have to handle an instance of the ProductRepository
-        InMemoryRepository<ProductCategory> productCategories;
+        IRepository<Product> context; //I have to handle an instance of the ProductRepository
+        IRepository<ProductCategory> productCategories;
 
         /// <summary>
         /// The constructor has to create the in-memory cache
         /// </summary>
-        public ProductManagerController()
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<Product>();
-            productCategories = new InMemoryRepository<ProductCategory>();
+            context = productContext;
+            productCategories = productCategoryContext;
         }
 
         // GET: ProductManager
