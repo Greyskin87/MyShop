@@ -10,20 +10,20 @@ namespace MyShop.WebUI.Controllers
 {
     public class ProductCategoryManagerController : Controller
     {
-        ProductCategoryRepository context; //I have to handle an instance of the ProductRepository
+        InMemoryRepository<ProductCategory> context; //I have to handle an instance of the ProductCategoryRepository
 
         /// <summary>
         /// The constructor has to create the in-memory cache
         /// </summary>
         public ProductCategoryManagerController()
         {
-            context = new ProductCategoryRepository();
+            context = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: ProductCategoryManager
         public ActionResult Index()
         {
-            List<ProductCategory> productCategories = context.Collection().ToList(); //Here I call the method I have created in Product Repository!
+            List<ProductCategory> productCategories = context.Collection().ToList(); //Here I call the method I have created in ProductCategory Repository!
             return View(productCategories);
         }
 

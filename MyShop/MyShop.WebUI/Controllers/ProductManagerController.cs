@@ -11,16 +11,16 @@ namespace MyShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        ProductRepository context; //I have to handle an instance of the ProductRepository
-        ProductCategoryRepository productCategories;
+        InMemoryRepository<Product> context; //I have to handle an instance of the ProductRepository
+        InMemoryRepository<ProductCategory> productCategories;
 
         /// <summary>
         /// The constructor has to create the in-memory cache
         /// </summary>
         public ProductManagerController()
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = new InMemoryRepository<Product>();
+            productCategories = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: ProductManager
