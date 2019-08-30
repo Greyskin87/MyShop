@@ -11,8 +11,10 @@ namespace MyShop.DataAccess.SQL
 {
     public class SQLRepository<T> : IRepository<T> where T : BaseEntity
     {
-        internal DataContext context; //Il contesto che devo usare
-        internal DbSet<T> dbSet; //La tabella su cui opero
+        internal DataContext context;
+        
+        //DbSet<T> is the collection of all entities in the context of the type T!
+        internal DbSet<T> dbSet;
 
         public SQLRepository(DataContext context)
         {
